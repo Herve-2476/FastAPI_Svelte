@@ -1,0 +1,11 @@
+#!/bin/bash
+
+WORKER_CLASS=uvicorn.workers.UvicornWorker
+BIND=0.0.0.0:8000
+LOG=/var/log/gunicorn/access.log
+
+exec gunicorn main:app \
+--worker-class $WORKER_CLASS \
+--bind $BIND \
+--access-logfile $LOG \
+--error-logfile $LOG \
